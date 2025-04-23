@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 0 72% 51%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 0 72% 51%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 0 72% 51%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 0 72% 51%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.font-pixel {
+  font-family: "Press Start 2P", cursive;
+}
+
+/* Pokemon type colors */
+.type-normal {
+  @apply bg-gray-400;
+}
+.type-fire {
+  @apply bg-red-500;
+}
+.type-water {
+  @apply bg-blue-500;
+}
+.type-electric {
+  @apply bg-yellow-400;
+}
+.type-grass {
+  @apply bg-green-500;
+}
+.type-ice {
+  @apply bg-blue-200;
+}
+.type-fighting {
+  @apply bg-red-700;
+}
+.type-poison {
+  @apply bg-purple-500;
+}
+.type-ground {
+  @apply bg-yellow-600;
+}
+.type-flying {
+  @apply bg-indigo-300;
+}
+.type-psychic {
+  @apply bg-pink-500;
+}
+.type-bug {
+  @apply bg-lime-500;
+}
+.type-rock {
+  @apply bg-yellow-800;
+}
+.type-ghost {
+  @apply bg-purple-700;
+}
+.type-dragon {
+  @apply bg-indigo-600;
+}
+.type-dark {
+  @apply bg-gray-800;
+}
+.type-steel {
+  @apply bg-gray-500;
+}
+.type-fairy {
+  @apply bg-pink-300;
+}
+
+/* Pokemon card hover effect */
+.pokemon-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Pokeball loading animation */
+.pokeball-loader {
+  animation: shake 1.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0, 0) rotate(0);
+  }
+  20% {
+    transform: translate(-10px, 0) rotate(-20deg);
+  }
+  30% {
+    transform: translate(10px, 0) rotate(20deg);
+  }
+  50% {
+    transform: translate(-10px, 0) rotate(-10deg);
+  }
+  60% {
+    transform: translate(10px, 0) rotate(10deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+}
+
+/* Remove these animations for the speech bubble */
+@keyframes pulsate {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+}
+
+.speech-bubble {
+  position: relative;
+  background: #ffffff;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  animation: pulsate 1s infinite;
+}
+
+.speech-bubble:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: #ffffff;
+  border-bottom: 0;
+  margin-left: -10px;
+  margin-bottom: -10px;
+}
+
+.dark .speech-bubble {
+  background: #1f2937;
+}
+
+.dark .speech-bubble:after {
+  border-top-color: #1f2937;
+}
+
+/* Add a shake animation for when Pokémon are speaking */
+@keyframes shake-little {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  2% {
+    transform: translate(1px, 0px) rotate(0.5deg);
+  }
+  4% {
+    transform: translate(0px, 1px) rotate(0.5deg);
+  }
+  6% {
+    transform: translate(1px, 0px) rotate(0.5deg);
+  }
+  8% {
+    transform: translate(0px, 1px) rotate(0.5deg);
+  }
+  10% {
+    transform: translate(1px, 1px) rotate(0.5deg);
+  }
+  12% {
+    transform: translate(0px, 0px) rotate(0.5deg);
+  }
+  14% {
+    transform: translate(1px, 0px) rotate(0.5deg);
+  }
+  16% {
+    transform: translate(0px, 1px) rotate(0.5deg);
+  }
+  18% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  20% {
+    transform: translate(0px, 0px) rotate(0.5deg);
+  }
+  /* Continue pattern */
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+
+.speaking-animation {
+  animation: shake-little 2s infinite;
+}
